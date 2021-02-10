@@ -5,7 +5,7 @@ if(isset($_POST['btnLogin']))
     include('connection.php');
 	$email = $_POST['email'];
 	$password    = md5($_POST['password']);
-	if(!empty($first_name) && !empty($last_name) && !empty($email) && !empty($password)){
+	if(!empty($email) && !empty($password)){
 	
 		$sql=mysqli_query($conn,"SELECT * FROM user where email='$email' and password='$password'");
 		$row  = mysqli_fetch_array($sql);
@@ -26,7 +26,7 @@ if(isset($_POST['btnLogin']))
     }
 	else{
 		$msg="All fields are mandatory";
-		header ("Location: login.php?error=".$msg);	
+		header ("Location: index.php?error=".$msg);	
 		exit;
 	}
 }
